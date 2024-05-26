@@ -1,6 +1,6 @@
-@L40Z.CAT.App_HostAddress = http://localhost:5195
+@L40Z.CAT.App_HostAddress = http://localhost:7163
 
-GET {{L40Z.CAT.App_HostAddress}}/weatherforecast/
+GET {{L40Z.CAT.App_HostAddress}}/user/
 Accept: application/json
 
 ###

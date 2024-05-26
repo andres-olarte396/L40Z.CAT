@@ -29,7 +29,7 @@ namespace Infrastructure.Data.Repositories
 
         public void Add(User user)
         {
-            var entity = new UserEntity { Name = user.Name, Email = user.Email };
+            var entity = new UserEntity { Name = user.Name, Email = user.Email, CreatedBy = "system" }; // Asignar el usuario
             _context.Users.Add(entity);
             _context.SaveChanges();
             user.Id = entity.Id;
@@ -42,6 +42,7 @@ namespace Infrastructure.Data.Repositories
 
             entity.Name = user.Name;
             entity.Email = user.Email;
+            entity.ModifiedBy = "system"; // Asignar el usuario
             _context.SaveChanges();
         }
 

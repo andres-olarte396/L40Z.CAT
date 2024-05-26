@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Data.Entities
 {
-    public class UserEntity
+    public class UserEntity : AuditEntity
     {
         [Key]
         public int Id { get; set; }
