@@ -28,20 +28,20 @@ namespace Presentation.API
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Version = "v1",
-                    Title = "Mi Proyecto API",
+                    Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                    Title = "L40Z.CAT",
                     Description = "Una simple API para gestionar usuarios",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    TermsOfService = new Uri("https://github.com/developer-laoz396/L40Z.CAT?tab=readme-ov-file#l40zcat"),
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
                     {
-                        Name = "Tu Nombre",
-                        Email = "tuemail@example.com",
-                        Url = new Uri("https://twitter.com/tuusuario")
+                        Name = "L40Z",
+                        Email = "developer-laoz396",
+                        Url = new Uri("https://github.com/developer-laoz396/L40Z.CAT")
                     },
                     License = new Microsoft.OpenApi.Models.OpenApiLicense
                     {
-                        Name = "Usar bajo LICX",
-                        Url = new Uri("https://example.com/license")
+                        Name = "MIT License",
+                        Url = new Uri("https://github.com/developer-laoz396/L40Z.CAT?tab=MIT-1-ov-file#")
                     }
                 });
 
@@ -68,8 +68,8 @@ namespace Presentation.API
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi Proyecto API v1");
-                c.RoutePrefix = string.Empty; // Para hacer que Swagger UI esté en la raíz (http://localhost:<puerto>/)
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", $"L40Z.CAT API Versión {Assembly.GetExecutingAssembly().GetName().Version}");
+                c.RoutePrefix = "swagger";
             });
 
             // Middleware para administración de errores
@@ -92,6 +92,5 @@ namespace Presentation.API
                 endpoints.MapControllers();
             });
         }
-
     }
 }
