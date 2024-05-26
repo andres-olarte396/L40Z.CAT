@@ -1,5 +1,5 @@
 # L40Z.CAT
-Claro, te puedo ayudar a estructurar tu proyecto en C# para implementar una arquitectura limpia y organizar las librerías necesarias. Una arquitectura limpia, también conocida como arquitectura hexagonal o arquitectura de cebolla, se enfoca en separar las preocupaciones y mantener la independencia de los componentes del sistema.
+Si quieres structurar tu proyecto en C# para implementar una arquitectura limpia y organizar las librerías necesarias. Una arquitectura limpia, también conocida como arquitectura hexagonal o arquitectura de cebolla, se enfoca en separar las preocupaciones y mantener la independencia de los componentes del sistema.
 
 ### Estructura del Proyecto
 
