@@ -1,5 +1,6 @@
 using Core.Application.DTOs;
 using Core.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.API.Controllers
@@ -9,6 +10,7 @@ namespace Presentation.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;

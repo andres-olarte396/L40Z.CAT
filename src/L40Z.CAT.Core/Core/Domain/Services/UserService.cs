@@ -6,15 +6,36 @@ using Core.Domain.Interfaces;
 
 namespace Core.Application.Services
 {
+    /// <summary>
+    /// User service.
+    /// </summary>
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="userRepository">
+        /// User repository.
+        /// </param>
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
+        /// <summary>
+        /// Get user by id.
+        /// </summary>
+        /// <param name="id">
+        /// User id.
+        /// </param>
+        /// <returns>
+        /// User DTO.
+        /// </returns>
+        /// <exception cref="NotFoundException">
+        /// Thrown when user not found.
+        /// </exception>
         public UserDto GetUserById(int id)
         {
             var user = _userRepository.GetById(id);
@@ -24,11 +45,26 @@ namespace Core.Application.Services
             return new UserDto { Id = user.Id, Name = user.Name, Email = user.Email };
         }
 
+        /// <summary>
+        /// Get all users.
+        /// </summary>
+        /// <returns>
+        /// List of user DTOs.
+        /// </returns>
         public IEnumerable<UserDto> GetAllUsers()
         {
             return _userRepository.GetAll().Select(user => new UserDto { Id = user.Id, Name = user.Name, Email = user.Email });
         }
 
+        /// <summary>
+        /// Create user.
+        /// </summary>
+        /// <param name="userDto">
+        /// User DTO.
+        /// </param>
+        /// <exception cref="Core.Exceptions.ValidationException">
+        /// Thrown when user name is empty.
+        /// </exception>
         public void CreateUser(UserDto userDto)
         {
             if (string.IsNullOrWhiteSpace(userDto.Name))
@@ -38,6 +74,15 @@ namespace Core.Application.Services
             _userRepository.Add(user);
         }
 
+        /// <summary>
+        /// Update user.
+        /// </summary>
+        /// <param name="userDto">
+        /// User DTO.
+        /// </param>
+        /// <exception cref="NotFoundException">
+        /// Thrown when user not found.
+        /// </exception>
         public void UpdateUser(UserDto userDto)
         {
             var user = _userRepository.GetById(userDto.Id);
@@ -49,6 +94,15 @@ namespace Core.Application.Services
             _userRepository.Update(user);
         }
 
+        /// <summary>
+        /// Delete user.
+        /// </summary>
+        /// <param name="id">
+        /// User id.
+        /// </param>
+        /// <exception cref="NotFoundException">
+        /// Thrown when user not found.
+        /// </exception>
         public void DeleteUser(int id)
         {
             var user = _userRepository.GetById(id);

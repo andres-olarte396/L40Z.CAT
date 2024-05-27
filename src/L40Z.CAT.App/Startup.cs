@@ -6,8 +6,17 @@ using System.Reflection;
 
 namespace Presentation.API
 {
+    /// <summary>
+    /// Clase de inicio de la aplicación
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="configuration">
+        /// Configuración de la aplicación
+        /// </param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -15,6 +24,12 @@ namespace Presentation.API
 
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// Configuración de los servicios de la aplicación
+        /// </summary>
+        /// <param name="services">
+        /// Colección de servicios de la aplicación
+        /// </param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -52,6 +67,15 @@ namespace Presentation.API
             });
         }
 
+        /// <summary>
+        /// Configuración de la aplicación
+        /// </summary>
+        /// <param name="app">
+        /// Aplicación de la que se va a configurar
+        /// </param>
+        /// <param name="env">
+        /// Entorno de la aplicación
+        /// </param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

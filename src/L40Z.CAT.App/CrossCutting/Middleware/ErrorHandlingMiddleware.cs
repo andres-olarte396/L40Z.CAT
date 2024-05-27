@@ -4,17 +4,38 @@ using System.Text.Json;
 
 namespace CrossCutting.Middleware
 {
+    /// <summary>
+    /// Middleware to handle exceptions and return a JSON response with the error message.
+    /// </summary>
     public class ErrorHandlingMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ErrorHandlingMiddleware> _logger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="next">
+        /// The next middleware in the pipeline.
+        /// </param>
+        /// <param name="logger">
+        /// The logger to log exceptions.
+        /// </param>
         public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
         {
             _next = next;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Invokes the middleware.
+        /// </summary>
+        /// <param name="context">
+        /// The current HTTP context.
+        /// </param>
+        /// <returns>
+        /// A task that represents the completion of the middleware.
+        /// </returns>
         public async Task InvokeAsync(HttpContext context)
         {
             try
@@ -28,6 +49,18 @@ namespace CrossCutting.Middleware
             }
         }
 
+        /// <summary>
+        /// Handles the exception and returns a JSON response with the error message.
+        /// </summary>
+        /// <param name="context">
+        /// The current HTTP context.
+        /// </param>
+        /// <param name="exception">
+        /// The exception to handle.
+        /// </param>
+        /// <returns>
+        /// A task that represents the completion of the middleware.
+        /// </returns>
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";

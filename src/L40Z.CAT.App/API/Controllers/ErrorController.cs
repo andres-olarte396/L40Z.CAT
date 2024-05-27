@@ -5,11 +5,19 @@ using System.Net;
 
 namespace L40Z.CAT.App.API.Controllers
 {
-
+    /// <summary>
+    /// Controller to handle errors
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ErrorController : ControllerBase
     {
+        /// <summary>
+        /// Handle error
+        /// </summary>
+        /// <returns>
+        /// Problem
+        /// </returns>
         [HttpGet]
         [Route("/error")]
         public IActionResult HandleError()
